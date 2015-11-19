@@ -1,0 +1,21 @@
+{
+  "variables": {
+    "aws_access_key": "",
+    "aws_secret_key": ""
+  },
+  "builders": [{
+    "type": "amazon-ebs",
+    "region": "us-east-1",
+    "instance_type": "m4.large",
+    "source_ami": "ami-b45713de",
+    "ami_name": "2012R2 {{timestamp}}",
+    "user_data_file": "ec2-user-data.ps1",
+    "communicator": "winrm",
+    "winrm_username": "vagrant",
+    "winrm_password": "FooBar@123",
+    "winrm_timeout": "4h",
+    "security_group_id": "sg-9184f2f7",
+    "access_key": "{{user `aws_access_key`}}",
+    "secret_key": "{{user `aws_secret_key`}}"
+  }]
+}
